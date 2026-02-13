@@ -1,49 +1,83 @@
-import AcmeLogo from '@/app/ui/acme-logo';
-import { ArrowRightIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
-import { lusitana } from '@/app/ui/fonts';
-import Image from 'next/image';
+
+const cards = [
+  {
+    href: '/pomodoro',
+    code: '01',
+    title: 'Pomodoro Sprint',
+    description: 'Run focused work/break cycles with a single cycle timer.',
+    tone: 'tone-a',
+  },
+  {
+    href: '/breathing',
+    code: '02',
+    title: 'Breathing Focus',
+    description: 'Follow paced inhale/hold/exhale rounds to reset attention.',
+    tone: 'tone-b',
+  },
+  {
+    href: '/choice',
+    code: '03',
+    title: 'Random Choice',
+    description: 'Drop options in a list and let the picker choose one.',
+    tone: 'tone-c',
+  },
+  {
+    href: '/password',
+    code: '04',
+    title: 'Password Forge',
+    description: 'Generate random secure passwords with custom rules.',
+    tone: 'tone-b',
+  },
+  {
+    href: '/habit',
+    code: '05',
+    title: 'Habit Streak',
+    description: 'Track today completion and keep your streak visible.',
+    tone: 'tone-a',
+  },
+  {
+    href: '/hydration',
+    code: '06',
+    title: 'Hydration Log',
+    description: 'Log water quickly and track progress to your daily goal.',
+    tone: 'tone-c',
+  },
+];
 
 export default function Page() {
   return (
-    <main className="flex min-h-screen flex-col p-6">
-      <div className="flex h-20 shrink-0 items-end rounded-lg bg-blue-500 p-4 md:h-52">
-        { <AcmeLogo />}
-      </div>
-      <div className="mt-4 flex grow flex-col gap-4 md:flex-row">
-        <div className="flex flex-col justify-center gap-6 rounded-lg bg-gray-50 px-6 py-10 md:w-2/5 md:px-20">
-        <div className="relative w-0 h-0 border-l-[15px] border-r-[15px] border-b-[26px] border-l-transparent border-r-transparent border-b-black"/>
-          <p className={`${lusitana.className} text-x1 text-gray-800 md:text-3xl md:leading-normal`}>
-            <strong>Welcome to Acme.</strong> This is the example for the{' '}
-            <a href="https://nextjs.org/learn/" className="text-blue-500">
-              Next.js Learn Course
-            </a>
-            , brought to you by Vercel.
-          </p>
+    <main className="mx-auto flex min-h-screen w-full max-w-6xl flex-col gap-8 px-5 py-8 md:px-10">
+      <section className="arcade-panel flex flex-col gap-4 p-6 md:p-8">
+        <p className="arcade-kicker text-sm md:text-base theme-text">Focus Utility Deck</p>
+        <h1 className="arcade-title text-3xl leading-tight md:text-5xl">
+          Boot A Mini App
+        </h1>
+        <p className="max-w-2xl text-base theme-muted md:text-lg">
+          Zero login. Just open a module and run it.
+        </p>
+      </section>
+
+      <section className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+        {cards.map((card) => (
           <Link
-            href="/login"
-            className="flex items-center gap-5 self-start rounded-lg bg-blue-500 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-blue-400 md:text-base"
+            key={card.href}
+            href={card.href}
+            className="tool-card group p-5 transition-transform hover:-translate-y-1"
           >
-            <span>Log in</span> <ArrowRightIcon className="w-5 md:w-6" />
+            <div
+              className={`mb-5 inline-flex rounded-lg border-4 border-[var(--panel)] px-4 py-2 arcade-title text-xl text-[var(--panel)] ${card.tone}`}
+            >
+              {card.code}
+            </div>
+            <h2 className="arcade-title text-2xl theme-text">{card.title}</h2>
+            <p className="mt-2 text-base theme-muted">{card.description}</p>
+            <span className="mt-6 inline-block font-semibold theme-text">
+              Start Tool -&gt;
+            </span>
           </Link>
-        </div>
-        <div className="flex items-center justify-center p-6 md:w-3/5 md:px-28 md:py-12">
-          <Image
-            src="/hero-desktop.png"
-            width={1000}
-            height={760}
-            className="hidden md:block"
-            alt="Screenshots of the dashboard project showing desktop version"
-          />
-          <Image
-            src="/hero-mobile.png"
-            width={560}
-            height={620}
-            className="block md:hidden"
-            alt="Screenshots of the dashboard project showing mobile version"
-          />
-        </div>
-      </div>
+        ))}
+      </section>
     </main>
   );
 }

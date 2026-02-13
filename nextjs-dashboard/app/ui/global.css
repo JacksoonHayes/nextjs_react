@@ -2,6 +2,263 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --bg-1: #010807;
+  --bg-2: #041a16;
+  --bg-3: #0a3c2c;
+  --text: #9dffbf;
+  --muted: #75c997;
+  --panel: #03110d;
+  --outline: #2de38e;
+  --outline-soft: rgba(45, 227, 142, 0.4);
+  --button-1: #2de38e;
+  --button-2: #1ec772;
+  --chip-a: #36ef94;
+  --chip-b: #23d582;
+  --chip-c: #139e60;
+  --card-shadow: 12px 12px 0 #0c4f34;
+}
+
+html[data-theme='matrix'] {
+  --bg-1: #010807;
+  --bg-2: #041a16;
+  --bg-3: #0a3c2c;
+  --text: #9dffbf;
+  --muted: #75c997;
+  --panel: #03110d;
+  --outline: #2de38e;
+  --outline-soft: rgba(45, 227, 142, 0.4);
+  --button-1: #2de38e;
+  --button-2: #1ec772;
+  --chip-a: #36ef94;
+  --chip-b: #23d582;
+  --chip-c: #139e60;
+  --card-shadow: 12px 12px 0 #0c4f34;
+}
+
+html[data-theme='retro'] {
+  --bg-1: #350066;
+  --bg-2: #8e1dbf;
+  --bg-3: #ff7e2f;
+  --text: #fff1cb;
+  --muted: #ffd9a6;
+  --panel: #4e0f73;
+  --outline: #ffcf3e;
+  --outline-soft: rgba(255, 207, 62, 0.4);
+  --button-1: #ff7e2f;
+  --button-2: #33ff99;
+  --chip-a: #ff7e2f;
+  --chip-b: #33ff99;
+  --chip-c: #ffe34f;
+  --card-shadow: 12px 12px 0 #2f0a47;
+}
+
+html[data-theme='cute'] {
+  --bg-1: #fff2fb;
+  --bg-2: #ffe8f5;
+  --bg-3: #eaf7ff;
+  --text: #582f61;
+  --muted: #7e5785;
+  --panel: #fffaff;
+  --outline: #ff8dc9;
+  --outline-soft: rgba(255, 141, 201, 0.35);
+  --button-1: #ff8dc9;
+  --button-2: #b3a3ff;
+  --chip-a: #ffb2da;
+  --chip-b: #b3a3ff;
+  --chip-c: #9fe7ff;
+  --card-shadow: 12px 12px 0 #f5cde2;
+}
+
+html[data-theme='nature'] {
+  --bg-1: #eef9ef;
+  --bg-2: #d7eed9;
+  --bg-3: #bfe2c2;
+  --text: #1f4728;
+  --muted: #3f6a46;
+  --panel: #f7fff4;
+  --outline: #4e8c57;
+  --outline-soft: rgba(78, 140, 87, 0.35);
+  --button-1: #6ba66d;
+  --button-2: #97c47b;
+  --chip-a: #91c57e;
+  --chip-b: #74b988;
+  --chip-c: #d8c383;
+  --card-shadow: 12px 12px 0 #bfd0ba;
+}
+
+html[data-theme='space'] {
+  --bg-1: #070a1d;
+  --bg-2: #171d44;
+  --bg-3: #2e2f77;
+  --text: #d7e3ff;
+  --muted: #a9b9e9;
+  --panel: #11173a;
+  --outline: #86a8ff;
+  --outline-soft: rgba(134, 168, 255, 0.35);
+  --button-1: #7f7bff;
+  --button-2: #57bbff;
+  --chip-a: #7f7bff;
+  --chip-b: #57bbff;
+  --chip-c: #9d7dff;
+  --card-shadow: 12px 12px 0 #0e1230;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    linear-gradient(transparent 96%, var(--outline-soft) 96%),
+    linear-gradient(90deg, transparent 96%, var(--outline-soft) 96%),
+    radial-gradient(circle at 14% 18%, var(--outline-soft) 0 14%, transparent 14%),
+    radial-gradient(circle at 84% 76%, var(--outline-soft) 0 14%, transparent 14%),
+    linear-gradient(140deg, var(--bg-1), var(--bg-2) 55%, var(--bg-3));
+  background-size: 14px 14px, 14px 14px, auto, auto, auto;
+  color: var(--text);
+  font-family: var(--font-arcade-body), sans-serif;
+}
+
+.arcade-title {
+  font-family: var(--font-arcade-heading), sans-serif;
+  letter-spacing: 0.04em;
+  line-height: 1.15;
+}
+
+.arcade-kicker {
+  font-family: var(--font-arcade-heading), sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.arcade-panel {
+  border: 4px solid var(--outline);
+  border-radius: 1rem;
+  background: var(--panel);
+  box-shadow: var(--card-shadow);
+}
+
+.arcade-input {
+  width: 100%;
+  border: 4px solid var(--outline);
+  border-radius: 0.75rem;
+  background: color-mix(in srgb, var(--panel) 80%, #ffffff 20%);
+  color: var(--text);
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.75rem 0.9rem;
+  outline: none;
+}
+
+.arcade-input:focus {
+  border-color: var(--button-1);
+}
+
+.arcade-button {
+  border: 4px solid var(--outline);
+  border-radius: 0.7rem;
+  background: var(--button-1);
+  color: color-mix(in srgb, var(--panel) 80%, #000000 20%);
+  cursor: pointer;
+  font-family: var(--font-arcade-heading), sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  padding: 0.7rem 1.1rem;
+  text-transform: uppercase;
+}
+
+.arcade-button:hover {
+  transform: translate(-1px, -1px);
+}
+
+.arcade-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.arcade-button.alt {
+  background: var(--button-2);
+  color: color-mix(in srgb, var(--panel) 80%, #000000 20%);
+}
+
+.arcade-back {
+  align-self: flex-start;
+  border: 4px solid var(--outline);
+  border-radius: 0.7rem;
+  background: var(--panel);
+  color: var(--text);
+  font-family: var(--font-arcade-heading), sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  padding: 0.6rem 0.9rem;
+  text-transform: uppercase;
+}
+
+.theme-text {
+  color: var(--text);
+}
+
+.theme-muted {
+  color: var(--muted);
+}
+
+.tool-card {
+  border: 4px solid var(--outline);
+  border-radius: 1rem;
+  background: var(--panel);
+  box-shadow: var(--card-shadow);
+}
+
+.tone-a {
+  background: var(--chip-a);
+}
+
+.tone-b {
+  background: var(--chip-b);
+}
+
+.tone-c {
+  background: var(--chip-c);
+}
+
+.theme-picker {
+  border: 3px solid var(--outline);
+  border-radius: 0.7rem;
+  background: var(--panel);
+  color: var(--text);
+  font-family: var(--font-arcade-body), sans-serif;
+  padding: 0.45rem 0.55rem;
+}
+
+.breathe-in {
+  animation: breatheIn var(--breathe-duration, 4s) linear forwards;
+}
+
+.breathe-out {
+  animation: breatheOut var(--breathe-duration, 6s) linear forwards;
+}
+
+@keyframes breatheIn {
+  from {
+    transform: scale(0.78);
+  }
+  to {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes breatheOut {
+  from {
+    transform: scale(1.2);
+  }
+  to {
+    transform: scale(0.78);
+  }
+}
+
 input[type='number'] {
   -moz-appearance: textfield;
   appearance: textfield;
