@@ -1,18 +1,18 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { useMemo, useState } from 'react';
+import Link from "next/link";
+import { useMemo, useState } from "react";
 
 function parseChoices(raw: string): string[] {
   return raw
-    .split('\n')
+    .split("\n")
     .map((item) => item.trim())
     .filter(Boolean);
 }
 
 export default function ChoicePage() {
-  const [input, setInput] = useState('Pizza\nTacos\nSushi');
-  const [result, setResult] = useState('');
+  const [input, setInput] = useState("Pizza\nTacsos\nSushi");
+  const [result, setResult] = useState("");
   const [rolling, setRolling] = useState(false);
 
   const choices = useMemo(() => parseChoices(input), [input]);
@@ -41,7 +41,9 @@ export default function ChoicePage() {
       </Link>
       <section className="arcade-panel p-6 md:p-8">
         <p className="arcade-kicker">Tool 03</p>
-        <h1 className="arcade-title mt-2 text-3xl md:text-4xl">Random Choice</h1>
+        <h1 className="arcade-title mt-2 text-3xl md:text-4xl">
+          Random Choice
+        </h1>
         <p className="mt-3 theme-muted">
           Paste options one per line, then spin the chooser.
         </p>
@@ -56,11 +58,15 @@ export default function ChoicePage() {
           placeholder="Movie A&#10;Movie B&#10;Movie C"
         />
         <div className="mt-4 flex flex-wrap items-center gap-3">
-          <button className="arcade-button" onClick={pickChoice} disabled={choices.length === 0 || rolling}>
-            {rolling ? 'Choosing...' : 'Pick Random'}
+          <button
+            className="arcade-button"
+            onClick={pickChoice}
+            disabled={choices.length === 0 || rolling}
+          >
+            {rolling ? "Choosing..." : "Pick Random"}
           </button>
           <p className="text-sm font-semibold theme-text">
-            {choices.length} option{choices.length === 1 ? '' : 's'} loaded
+            {choices.length} option{choices.length === 1 ? "" : "s"} loaded
           </p>
         </div>
       </section>
@@ -68,7 +74,7 @@ export default function ChoicePage() {
       <section className="arcade-panel p-6 text-center">
         <p className="arcade-kicker">Selected Option</p>
         <p className="arcade-title mt-3 min-h-16 text-4xl theme-text">
-          {result || 'Waiting...'}
+          {result || "Waiting..."}
         </p>
       </section>
     </main>
